@@ -1,0 +1,41 @@
+<!-- Signup Form -->
+<div class="signup">
+    <div class="signup-heading-wrapper">
+        <h2 class="signup-heading">Sign Up</h2>
+    </div>
+    <form method="POST">
+        <p>First Name:</p>
+        <input type="text" name="first_name" placeholder="" required
+            <% if(session.signup && session.signup.first_name){ %> value=<%-    `${session.signup.first_name}` %>
+            <% } %>>
+        <p>Last Name:</p>
+        <input type="text" name="last_name" placeholder="" required
+            <% if(session.signup && session.signup.last_name){ %> value=<%- `${session.signup.last_name}` %> <% } %>>
+        <p>Shop Name:</p>
+        <input type="text" name="shop_name" placeholder="" required
+            <% if(session.signup && session.signup.shop_name){ %> value=<%- `${session.signup.shop_name}` %> <% } %>>
+        <p>Date of Birth:</p>
+        <input type="text" name="DOB" placeholder="DD/MM/YYYY" required <% if(session.signup && session.signup.DOB){ %>
+            value=<%-    `${session.signup.DOB}` %> <% } %>>
+        <p>E-mail:</p>
+        <input type="text" name="email" placeholder="" required <% if(session.signup && session.signup.email){ %>
+            value=<%-    `${session.signup.email}` %> <% } %>>
+        <p>Username:</p>
+        <input type="text" name="username" placeholder="" required <% if(session.signup && session.signup.username){ %>
+            value=<%-    `${session.signup.username}` %> <% } %>>
+        <p>Password:</p>
+        <input type="password" name="password" placeholder="" required>
+        <input type="submit" name="" value="Sign Up">
+        <% if(errors.length>0){ %> <div class="errors">
+            <ul>
+                <% errors.forEach(error=>{ %>
+                <li><%= error.msg %></li>
+                <% }); %>
+            </ul>
+        </div>
+        <% } %>
+        <p class="have-account">Already have an account?&nbsp;&nbsp;<a href="/login">Login!</a></p>
+    </form>
+
+</div>
+<!-- Signup Form -->

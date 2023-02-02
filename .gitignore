@@ -1,0 +1,6 @@
+.adminbro
+.nyc_output
+backups
+node_modules
+package-lock.json
+extranote.md

@@ -1,0 +1,47 @@
+<!-- Main Window -->
+<div class="main-window">
+    <!-- Search Bar -->
+    <div class="search-bar-wrapper card">
+        <form>
+            <div class="sort-bar">
+                <!-- <form> -->
+                <p>Sort by:&nbsp;&nbsp;</p>
+                <select id="sort" name="sort">
+                    <!-- <option value="Trending">Trending</option> -->
+                    <!-- <option value="New" selected>New</option> -->
+
+                    <option value="New" <% if(!!session.browseDesigns && session.browseDesigns.sort == "New"){ %>
+                        selected <% } %>>New</option>
+                    <option value="Ascending Price"
+                        <% if((!!session.browseDesigns && session.browseDesigns.sort == "Ascending Price") || !session.browseDesigns || session.browseDesigns.sort=="") {%>
+                        selected <% } %>>Ascending Price</option>
+                    <option value="Descending Price"
+                        <% if(!!session.browseDesigns && session.browseDesigns.sort == "Descending Price") {%> selected
+                        <% } %>>Descending Price</option>
+                </select>
+                <noscript><input type="submit" value="Submit"></noscript>
+                <!-- </form> -->
+                <!-- <div style="clear:both"></div> -->
+            </div>
+
+            <div class="search-bar">
+                <!-- <form> -->
+                <button type="submit" class="no-button btn btn-default">
+                    <i class="fa fa-search"></i>
+                </button>
+                <input class="search-bar-input" type="text" name="search" value="<% if(session.browseDesigns.search){ %><%=session.browseDesigns.search%><%}%>">
+                <!-- </form> -->
+            </div>
+        </form>
+
+        <div class="clearfix"></div>
+    </div>
+    <!-- End Search Bar -->
+
+    <!-- Search Results-->
+    <% productsString = JSON.stringify(products) %>
+    <div class=" results card resultDesigns" data-products='<%= productsString %>'></div>
+            <!-- End Search Results-->
+            <div class="clearfix"></div>
+    </div>
+    <!-- End Main Window -->

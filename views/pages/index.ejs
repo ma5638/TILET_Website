@@ -1,0 +1,72 @@
+<!--Cover Image-->
+
+<div class="cover-main">
+    <div class="main-image">
+        <img class src="/pictures/main.jpg">
+    </div>
+    <div class="overlay-cover">
+        <h2 class="title">TILET</h2>
+        <h4 class="sub-title">Fashion that Inspires</h4>
+        <div class="cover-buttons">
+            <a href="/browse/designs">
+                <button class="btn btn-primary-outline designprod fontButton">PRODUCTS</button>
+            </a>
+            <a href="/browse/shops">
+                <button class="btn btn-primary-outline designshops fontButton">&nbsp;&nbsp;SHOPS&nbsp;&nbsp;</button>
+            </a>
+        </div>
+    </div>
+</div>
+<!--End Cover Image-->
+
+
+<!-- New Arrivals -->
+<div class="card">
+    <div class="card-slider new-arrivals-wrapper">
+        <h2 class="card-heading">New Arrivals</h2>
+        <i class="fa fa-chevron-left prev"></i>
+        <i class="fa fa-chevron-right next"></i>
+
+        <div class="slide-wrapper new-arrivals">
+            <% for(i = 0; i < newArrivals.length; i++){ %>
+            <% product = newArrivals[i]; %>
+
+            <a class="slide" href="<%=`/users/${product.userId}/${product.iddesign}`%>">
+
+                <div class="slide-img-wrapper">
+                    <img
+                        src='<%=`/users/${product.dataValues.userId}/${product.iddesign}/${product.iddesign}${product.imageExtension}`%>'>
+                </div>
+                <div class="info">
+                    <%=`${product.designName}`%>
+                    </p>
+                </div>
+
+            </a>
+
+
+
+            <% } %>
+        </div>
+    </div>
+
+</div>
+
+<!-- End New Arrivals -->
+
+<!-- Our Aim -->
+<div class="card" id="ourAim">
+    <h2 class="card-heading">Our Aim</h2>
+    <div class="card-text-wrapper">
+        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at dui tempus, posuere
+            tellus at, dignissim quam. In ac accumsan est. Vestibulum eu auctor enim. Donec sem erat, efficitur id
+            laoreet ut, blandit at orci. Aenean maximus tortor sit amet felis tincidunt, non dignissim mauris
+            venenatis. Duis blandit, neque a. </p>
+    </div>
+</div>
+
+<script>
+    console.log("This should be an error");
+</script>
+
+<!-- End Our Aim -->

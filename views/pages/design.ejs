@@ -1,0 +1,17 @@
+<div class="main-window">
+    <% if(userId == session.userId && !edit && product) { %>
+    <div class="options">
+        <button><i class="fas fa-cog"></i>&nbsp;Options</button>
+        <div class="options-dropdown">
+            <a href="<%=`/users/${userId}/${product.iddesign}/edit`%>">Edit Product</a>
+            <a href="<%=`/users/${userId}/${product.iddesign}/delete`%>">Delete Product</a>
+        </div>
+    </div>
+    <% } else if(userId == session.userId && edit) {%>
+    <a class="cancel-button-link"
+        href="<%= product? `/users/${userId}/${product.iddesign}`: `/users/${userId}/`%>">Cancel</a>
+    <% } %>
+    <!--Cover Image-->
+    <%- include('./partials/design_view.ejs'); %>
+</div>
+<!--End Cover Image-->

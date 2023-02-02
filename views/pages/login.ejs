@@ -1,0 +1,31 @@
+<!-- Login Form -->
+<div class="main-window">
+    <div class="login-form">
+        <div class="login-heading-wrapper">
+            <h2 class="login-heading">Login</h2>
+        </div>
+        <form method="POST">
+            <p>Username:</p>
+            <!-- Remembering Form-->
+            <input type="text" name="username" placeholder="Enter Username"
+                value=<% if(session.login && session.login.username){ %> <%-    `${session.login.username}` %>
+                <% } else{ %>>
+            <%= "" %>
+            <% }%>
+            <p>Password:</p>
+            <input type="password" name="password" placeholder="Enter Password">
+            <input type="submit" name="" value="Login">
+            <% if(errors.length>0){ %> <div class="errors">
+                <ul>
+                    <% errors.forEach(error=>{ %>
+                    <li><%= error.msg %></li>
+                    <% }); %>
+                </ul>
+            </div>
+            <% } %>
+            <!-- <p class="cannot-login hide">Forgot your password?&nbsp;&nbsp;<a href="#">Recover password</a></p> -->
+            <p class="cannot-login">Do not have an account?&nbsp;&nbsp;<a href="/signup">Sign up!</a></p>
+        </form>
+    </div>
+</div>
+<!-- End Login Form -->

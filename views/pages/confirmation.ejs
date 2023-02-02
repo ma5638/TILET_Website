@@ -1,0 +1,16 @@
+<!-- Designed to be a general template for confirmation messages -->
+
+<div class="main-window">
+    <div class="page-center-wrapper">
+        <h4 class="confirmation-question"><%= confirmation_message %></h4>
+        <br>
+        <div class="action-buttons">
+            <form action="<%=`${sendToUrl}/delete`%>" method="POST">
+                <button class="confirm-button">Delete Account</button>
+            </form>
+            <a class="cancel-button" href='<%=sendToUrl%>'>Cancel</a>
+
+        </div>
+
+    </div>
+</div>

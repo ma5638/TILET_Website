@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div id="dropContainer" style="border:1px solid black;height:100px;">
+        Drop Here
+    </div>
+    Should update here:
+    <input type="file" id="fileInput" />
+</body>
+
+</html>
+
+<script>
+    // dragover and dragenter events need to have 'preventDefault' called
+    // in order for the 'drop' event to register. 
+    // See: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Drag_operations#droptargets
+    dropContainer = document.querySelector('#dropContainer');
+    dropContainer.addEventListener('dragover', function (evt) {
+        evt.preventDefault();
+        console.log('entered');
+    });
+
+    dropContainer.addEventListener('dragenter', function (evt) {
+        evt.preventDefault();
+    });
+
+    dropContainer.addEventListener('drop', function (evt) {
+        // pretty simple -- but not for IE :(
+        evt.preventDefault();
+        fileInput.files = evt.dataTransfer.files;
+
+        // If you want to use some of the dropped files
+        const dT = new DataTransfer();
+        console.log(evt.dataTransfer);
+        console.log(evt.dataTransfer.files);
+        dT.items.add(evt.dataTransfer.files[0]);
+
+        console.log(dT.files);
+        fileInput.files = dT.files;
+
+        evt.preventDefault();
+    });
+</script>

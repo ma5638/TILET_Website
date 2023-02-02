@@ -1,0 +1,26 @@
+<!-- Main Window -->
+<div class="main-window">
+    <!-- Search Bar -->
+    <div class="search-bar-wrapper card">
+        <form>
+
+            <div class="search-bar">
+                <!-- <form> -->
+                <button type="submit" class="no-button btn btn-default">
+                    <i class="fa fa-search"></i>
+                </button>
+                <input class="search-bar-input" type="text" name="search">
+                <!-- </form> -->
+            </div>
+        </form>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <!-- Search Results-->
+    <% usersString = JSON.stringify(users) %>
+    <div class="results card resultShops" data-users='<%= usersString %>'>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<!-- End Main Window -->

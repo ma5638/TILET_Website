@@ -1,0 +1,75 @@
+<% if(userId == session.userId && edit){ %>
+<form action="#" class="dropzone" method="POST" enctype="multipart/form-data">
+    <% } %>
+    <div class="details">
+        <div class="cover">
+            <div class="main-image-product">
+
+                <% if(userId == session.userId && edit){ %>
+                <div class>
+                    <div class="btn">
+                        <input type="file" name="uploaded_image">
+                    </div>
+
+                </div>
+                <% } %>
+                <img class="tempImageUpload" id="side-view-image"
+                    src='<%= product? `/users/${product.dataValues.userId}/${product.dataValues.iddesign}/${product.iddesign}${product.imageExtension}`:'' %>'>
+                <!-- </a> -->
+            </div>
+
+
+        </div>
+        <!-- Main Content -->
+        <div class="main-content card">
+            <% if(userId == session.userId && edit) {%>
+            <input type="text" name="designName" placeholder="Design Name"
+                value='<% if(typeof addProd !== 'undefined' && addProd.designName){ %><%=`${addProd.designName}` %><% } else {%><%= product? product.designName:""%><% } %>'>
+            <br>
+            <i class="fa fa-user"></i> <%= userId %>
+            <hr>
+            <input type="number" name="price" placeholder="Price" required
+                value='<% if(typeof addProd !== 'NaN' && addProd.price){ %><%-`${addProd.price}` %><% } else {%><%= product? product.price:""%><% } %>'>
+            <!-- <div style="clear:both"></div> -->
+            <hr>
+            <input type="text" name="description" placeholder="Description" value='<% if(typeof addProd !== 'undefined' && addProd.description){ %> <%-`${addProd.description}` %>
+            <% } else {%><%= product?  (product.description != null ?  `${product.description}`: ""):"" %><% } %>'>
+            <hr>
+            <!-- Designer's Contact
+        <hr> -->
+            <input class="confirm-changes" type="submit" name="" value="Submit">
+
+            <% if(errors.length>0){ %> <div class="errors">
+                <ul>
+                    <% errors.forEach(error=>{ %>
+                    <li><%= error.msg %></li>
+                    <% }); %>
+                </ul>
+            </div>
+            <% } %>
+
+            <% } else { %>
+            <h2><%= product.designName %></h2>
+            <i class="fa fa-user"></i> <%= `${product.dataValues.First_Name} ${product.dataValues.Last_Name}` %>
+            <hr>
+            <span class="prod-price">
+                <span class='currency'> ETB </span><%= product.price %>
+            </span>
+            <div class="clearfix">
+                <hr>
+                <div class="prod-description">
+                    <%= product.description %>
+                </div>
+                <hr>
+                <!-- Designer's Contact -->
+                <!-- <br> -->
+                <a href=<%= `/users/${userId}` %>>
+                    <button class="exploreShop">Browse Shop</button>
+                </a>
+            </div>
+            <% } %>
+        </div>
+    </div>
+    <% if(userId == session.userId && edit){ %>
+</form>
+<% } %>

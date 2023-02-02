@@ -1,0 +1,36 @@
+<!-- Footer -->
+<footer class="theme-color">
+    <div class="footer-wrapper">
+        <div class="footer-section">
+            <h4 class="footer-subtitle"> Contact Us</h4>
+            <ul>
+                <li>Email: ###############</li>
+                <li>Phone: +############</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4 class="footer-subtitle"> Quick Links</h4>
+            <ul>
+                <% if(!session.userId){ %>
+                <li><a class="quick-link" href="/signup">Sign up</a></li>
+                <li><a class="quick-link" href="/login">Login</a></li>
+                <% } %>
+                <li><a class="quick-link" href="/browse/designs">Browse Designs</a></li>
+                <li><a class="quick-link" href="/browse/shops">Browse Shops</a></li>
+                <li><a class="quick-link" href="/about">About us</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4 class="footer-subtitle">Follow Us</h4>
+            <ul>
+                <li id="social-media">
+
+                    <a class="fab fa-twitter-square" href="#"></a>
+                    <a class="fab fa-facebook-square" href="#"></a>
+                    <a class="fab fa-instagram-square" href="#"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->

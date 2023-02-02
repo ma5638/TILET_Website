@@ -1,0 +1,120 @@
+<div class="card">
+
+    <% if(userId == session.userId && edit) {%>
+    <p>
+        <a class="cancel-button-link" href="<%=`/users/${userId}`%>">Cancel</a>
+    </p>
+    <form action="#" method="POST" enctype="multipart/form-data">
+
+        <div class="cover-main">
+            <div class="file-field input-field">
+                <div class="btn">
+                    <input type="file" name="uploaded_image">
+                </div>
+            </div>
+            <% } else if(userId==session.userId){ %>
+            <div class="options">
+                <button><i class="fas fa-cog"></i>&nbsp;Options</button>
+                <div class="options-dropdown">
+                    <a href="<%=`/users/${userId}/edit`%>">Edit Shop</a>
+                    <a href="<%=`/users/${userId}/addProduct`%>">Add Product</a>
+                    <a href="<%=`/users/${userId}/delete`%>">Delete Account</a>
+                </div>
+            </div>
+            <% } %>
+            <div class="main-cover-image-wrapper">
+                <img class="tempImageUpload" src="<%=`/users/${userId}/${userId}.jpg`%>">
+            </div>
+
+        </div>
+
+
+
+        <!-- Main Content -->
+        <div class="main-content card">
+            <% if(userId == session.userId && edit) {%>
+            <div class="Name">
+                <input type="text" name="shopName" placeholder="Your Shop Name"
+                    value='<%= user? user.dataValues.shopName:""%>'>
+                <p>
+                    <i class="fa fa-user"></i>&nbsp;&nbsp;<%= `${user.First_Name} ${user.Last_Name}` %>
+                </p>
+            </div>
+            <div>
+
+
+                <hr>
+                <!-- <input type="text" name="contact" placeholder="Contact Information" value=<%=`Email: ${user.Email}`%>> -->
+                <div class="user-contact">
+                    <div class="contact-item">
+                        <span class="icon-wrapper emailCopyClick">
+                            <i class="fa fa-envelope" id="emailIcon"></i>
+                        </span>
+                        <span class="email"><%-user.Email%></span>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <input class="confirm-changes" type="submit" name="" value="Submit">
+            </div>
+
+            <% } else{ %>
+            <div class="Name">
+                <h1><%= `${user.dataValues.shopName}` %></h1>
+                <p>
+                    <i class="fa fa-user"></i>&nbsp;&nbsp;<%= `${user.First_Name} ${user.Last_Name}` %>
+                </p>
+            </div>
+            <hr>
+            <div class="user-contact">
+                <div class="contact-item">
+                    <span class="icon-wrapper emailCopyClick">
+                        <i class="fa fa-envelope" id="emailIcon"></i>
+                    </span>
+                    <span class="email"><%-user.Email%></span>
+                </div>
+                <br>
+            </div>
+            <% } %>
+        </div>
+        <% if(userId == session.userId && edit) {%>
+    </form>
+    <% } %>
+
+    <% if(products.length>0){ %>
+    <div class="products card">
+        <h4 class="products-title">Products</h4>
+
+
+
+
+        <div class="picture-layout">
+
+            <!-- Add 'Add' Tile -->
+            <% if(userId == session.userId) {%>
+            <a class="product-tile add-product-tile" href='<%=`/users/${userId}/addProduct`%>'>
+                <div class="info">
+                    <p>&nbsp;</p>
+                </div>
+                <img src="/pictures/add.jpg">
+            </a>
+            <% } %>
+
+
+            <%for(i = 0; i<products.length;i++){%>
+            <% product = products[i]; %>
+
+            <a class="product-tile" href='<%=`/users/${userId}/${product.iddesign}`%>'>
+                <div class="info">
+                    <p><%=product.designName%></p>
+                </div>
+                <img
+                    src='<%=`/users/${product.dataValues.userId}/${product.iddesign}/${product.iddesign}${product.imageExtension}`%>'>
+            </a>
+            <%}%>
+
+        </div>
+
+    </div>
+    <% } %>
+        </div>
